@@ -3,6 +3,7 @@ export const CoinList = (currency) =>
 
 export const SingleCoin = (id) => `https://api.coingecko.com/api/v3/coins/${id}`
 
+//This api take id of the coin, number of days and th currency whether it is usd or inr.
 export const HistoricalChart = (id, days = 365, currency) =>
   `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`
 
