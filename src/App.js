@@ -22,8 +22,8 @@ function App() {
         <Header />
 
         <Routes>
-          <Route exact path="/" component={HomePage}></Route>
-          <Route exact path="/coins/:id" component={CoinPage}></Route>
+          <Route exact path="/" element={<HomePage/>}></Route>
+          <Route exact path="/coins/:id" element={<CoinPage/>}></Route>
         </Routes>
       </div>
     </Router>
