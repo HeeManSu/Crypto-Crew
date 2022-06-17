@@ -2,12 +2,11 @@ import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import ReactHtmlParser from "react-html-parser";
-import CoinInfo from "../Components/CoinInfo";
+import ReactHtmlParser from "react-html-parser";
+import CoinInfo from "../components/CoinInfo";
 import { SingleCoin } from "../config/api";
-import { numberWithCommas } from "../Components/CoinsTable";
+import { numberWithCommas } from "../components/CoinsTable";
 import { CryptoState } from "../CryptoContext";
-
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -94,15 +93,7 @@ const CoinPage = () => {
           {coin?.name}
         </Typography>
         <Typography variant="subtitle1" className={classes.description}>
-          {/* Reacthtmlparser is used to convert html into english.
-            it is a package.
-            en gives us english description.
-            we want to split it whenever we encounter full stop.
-            we take 0th index of the description. becuase the description is 
-            very large we can't take that large description. */}
-                   {/* {ReactHtmlParser */}
-                   (coin?.description.en.split(". ")[0])
-                   {/* }. */}
+          {ReactHtmlParser(coin?.description.en.split(". ")[0])}.
         </Typography>
         <div className={classes.marketData}>
           <span style={{ display: "flex" }}>

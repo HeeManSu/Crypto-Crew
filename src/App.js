@@ -1,35 +1,30 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Header from './Components/Header'
-import HomePage from './Pages/HomePage'
-import CoinPage from './Pages/CoinPage'
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
+import Homepage from "./Pages/HomePage";
+import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
+import CoinPage from "./Pages/CoinPage";
+import Header from "./components/Header";
 
 const useStyles = makeStyles(() => ({
   App: {
-    backgroundColor: '#14161a',
-    color: 'white',
-    minHeight: '100vh',
+    backgroundColor: "#14161a",
+    color: "white",
+    minHeight: "100vh",
   },
-}))
+}));
 
 function App() {
+  const classes = useStyles();
 
-  const classes = useStyles()
   return (
-    <Router>
+    <BrowserRouter>
       <div className={classes.App}>
         <Header />
-
-        <Routes>
-          <Route exact path="/" element={<HomePage/>}></Route>
-          <Route exact path="/coins/:id" element={<CoinPage/>}></Route>
-        </Routes>
+        <Route path="/" component={Homepage} exact />
+        <Route path="/coins/:id" component={CoinPage} exact />
       </div>
-    </Router>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
-
-// 30 minutes
+export default App;
