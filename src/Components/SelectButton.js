@@ -1,9 +1,5 @@
 import { makeStyles } from "@material-ui/core";
 
-
-//selected and onclick is used in coinInfo.
-//Children means using anything written in the selected button in the coinInfo can be
-// used here.
 const SelectButton = ({ children, selected, onClick }) => {
   const useStyles = makeStyles({
     selectbutton: {
@@ -16,7 +12,7 @@ const SelectButton = ({ children, selected, onClick }) => {
       cursor: "pointer",
       backgroundColor: selected ? "gold" : "",
       color: selected ? "black" : "",
-      //Whenever it is selected the style is going to be different.
+      
       fontWeight: selected ? 700 : 500,
       "&:hover": {
         backgroundColor: "gold",

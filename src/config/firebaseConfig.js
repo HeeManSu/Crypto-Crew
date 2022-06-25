@@ -1,6 +1,4 @@
 const firebaseConfig = {
-
-    //These are provided by the firebase.
     apiKey: "AIzaSyAy_6kC3QSivdfOCDSM1PvcBIxtnws75KY",
     authDomain: "crypto-tracker-8e216.firebaseapp.com",
     projectId: "crypto-tracker-8e216",

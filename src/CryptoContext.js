@@ -5,27 +5,23 @@ import axios from "axios";
 import { CoinList } from "./config/api";
 import { onSnapshot, doc } from "firebase/firestore";
 
-// We have created a context named crypto.
-// crypto is the name of our context.
 const Crypto = createContext();
 
-//Here children is all the component and components within those components which is passed as prop.
 const CryptoContext = ({ children }) => {
 
-  //Made all the states that is used more than 1 time within the app.
+
   const [currency, setCurrency] = useState("INR");
   const [symbol, setSymbol] = useState("₹");
 
-  //This will show the toast like message .
   const [alert, setAlert] = useState({
-    //Our alert is going to have few things.
+  
     open: false,
     message: "",
     type: "success",
   });
   const [user, setUser] = useState(null);
   const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);  //Loading when seared fo the coin.
+  const [loading, setLoading] = useState(false);  
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
@@ -46,7 +42,7 @@ const CryptoContext = ({ children }) => {
     }
   }, [user]);
 
-  //This is going to monitor the authentiction state of our firebase app.
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) setUser(user);
@@ -73,19 +69,15 @@ const CryptoContext = ({ children }) => {
     // eslint-disable-next-line
   }, [currency]);
 
-  // We have to wrap the createContext return with .Provider.
-  // value take all the parameter that we have to export from the createContext.
-  // We can make and export anything from cryptoContext like functions, state etc
   return (
     <Crypto.Provider value={{ currency, setCurrency, symbol, coins, loading, alert, user, watchlist, setAlert  }}>
-    {children}          {/*Children is all the components and components within those components */}
+    {children}       
     </Crypto.Provider>
   );
 };
 
 export default CryptoContext;
 
-//Made a function cryptoState and returned Whole createContext within useContext hook.
 export const CryptoState = () => {
   return useContext(Crypto);
 };

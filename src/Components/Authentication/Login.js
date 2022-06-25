@@ -11,9 +11,7 @@ const Login = ({ handleClose }) => {
   const { setAlert } = CryptoState();
 
   const handleSubmit = async () => {
-    //We will first check if the email and password is empty or not. 
     if (!email || !password) {
-      //If it is empty then it will show the below error.
       setAlert({
         open: true,
         message: "Please fill all the Fields",

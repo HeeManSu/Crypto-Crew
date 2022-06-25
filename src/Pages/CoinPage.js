@@ -16,18 +16,13 @@ import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const CoinPage = () => {
-  //It is used to access Product details page, COin details page, etc.
-  //It takes the dynamic id of the page and returns to the page.
-  //Used when we can dynamic product id and product name.
-  //We get id variable which is given in the App.js/
+
   const { id } = useParams()
 
-  //This set state will save the data whatever we get from the api.
   const [coin, setCoin] = useState()
 
   const { currency, symbol, user, watchlist, setAlert} = CryptoState()
 
-  //Fetching single coin data from the API.
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id))
 
@@ -82,7 +77,7 @@ const CoinPage = () => {
     }
   }
 
-  //To call the API function.
+
   useEffect(() => {
     fetchCoin()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,11 +133,9 @@ const CoinPage = () => {
 
   const classes = useStyles()
 
-  //Checking if there is coin or not if the coin will not be there then it will show loading in linear progress bar.
   if (!coin) return <LinearProgress style={{ backgroundColor: 'gold' }} />
 
   return (
-    //There is two parts in this page .First one is Coin description part and second one is the chart part.
     <div className={classes.container}>
       <div className={classes.sidebar}>
         <img
@@ -155,9 +148,7 @@ const CoinPage = () => {
           {coin?.name}
         </Typography>
         <Typography variant="subtitle1" className={classes.description}>
-          {/* ReactHtmlParser. we have some html in the description of the coin page. 
-        ReactHtmlParser It is an package which convert the html description into the real text. en denotes english. 
-        The description is very large so we want to split the desciption whenever full stop comes. We are taking only 0th index of the description because the desciption is very large and we can't show the whole description here.  */}
+        
           {ReactHtmlParser(coin?.description.en.split('. ')[0])}.
         </Typography>
         <div className={classes.marketData}>
@@ -172,7 +163,7 @@ const CoinPage = () => {
                 fontFamily: 'Montserrat',
               }}
             >
-              {/* This will give the rank of the coin the coin in terms of its market cap. */}
+      
               {numberWithCommas(coin?.market_cap_rank)}
             </Typography>
           </span>
@@ -190,7 +181,7 @@ const CoinPage = () => {
             >
               {symbol}{' '}
               {numberWithCommas(
-                //This will be involved in changing the currency.
+          
                 coin?.market_data.current_price[currency.toLowerCase()],
               )}
             </Typography>
@@ -209,10 +200,9 @@ const CoinPage = () => {
               {symbol}{' '}
               {numberWithCommas(
                 coin?.market_data.market_cap[currency.toLowerCase()]
-                  //It will convert the marketCap into the the string.
-                  //It is necessary to convert because slice function can only be used with string.
+               
                   .toString()
-                  //This slice means removes -6 characters form the end and and from 0 to removing -6 character.
+
                   .slice(0, -6),
               )}
               M

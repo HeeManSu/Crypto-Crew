@@ -5,7 +5,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 
 const Signup = ({ handleClose }) => {
-  //We are going to have 3 states. for the password , email and confirm password.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,20 +23,17 @@ const Signup = ({ handleClose }) => {
 
     try {
 
-      //This will add the email and password authentication in firebase. It will take auth , emial and password.
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      //If the signup is successful then it will show the success message.
       setAlert({
         open: true,
         message: `Sign Up Successful. Welcome ${result.user.email}`,
         type: "success",
       });
 
-      //After successful signUp this will close the modal. 
       handleClose();
     } catch (error) {
       setAlert({
@@ -50,7 +46,6 @@ const Signup = ({ handleClose }) => {
   };
 
   return (
-    // We are having box where all the components will be present.
     <Box
       p={3}
       style={{

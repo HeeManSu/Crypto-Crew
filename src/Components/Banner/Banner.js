@@ -3,7 +3,6 @@ import Carousel from "./Carousel";
 
 const useStyles = makeStyles(() => ({
   banner: {
-    //Image is present in public folder.
     backgroundImage: "url(./banner2.jpg)",
   },
   bannerContent: {
@@ -55,7 +54,6 @@ function Banner() {
             Get all the Info regarding your favorite Crypto Currency
           </Typography>
         </div>
-        {/* This carousel came from react alice carousel */}
         <Carousel />
       </Container>
     </div>

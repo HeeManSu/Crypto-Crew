@@ -5,8 +5,6 @@ import CoinsTable from "../components/CoinsTable";
 const Homepage = () => {
   return (
     <>
-    {/* used fragment here
-    There is two things present in the home page */}
       <Banner />
       <CoinsTable />
     </>
