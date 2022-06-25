@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import CoinPage from "./Pages/CoinPage";
 import Header from "./components/Header";
+import Alert from "./components/Alert";
 
 // use Styles is used to provide styles. It returns a hook which can be used in the function component.
 const useStyles = makeStyles(() => ({
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" component={Homepage} exact />
         <Route path="/coins/:id" component={CoinPage} exact />
       </div>
+      <Alert />
     </BrowserRouter>
   );
 }
