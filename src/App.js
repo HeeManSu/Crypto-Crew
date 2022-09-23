@@ -6,7 +6,6 @@ import CoinPage from "./Pages/CoinPage";
 import Header from "./components/Header";
 import Alert from "./components/Alert";
 
-
 const useStyles = makeStyles(() => ({
   App: {
     backgroundColor: "#14161a",     
@@ -21,7 +20,6 @@ function App() {
 
   return (
     <BrowserRouter>
-
       <div className={classes.App}>
         <Header />
         <Route path="/" component={Homepage} exact />
